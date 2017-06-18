@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
+using Newtonsoft.Json;
 
-namespace Task4
+namespace Task6
 {
     public enum Currency { EUR, GBP, USD, YEN }
 
@@ -32,14 +35,19 @@ namespace Task4
             {
                new Kamera("Sony SNC-VM631", 2.3, 569m, Currency.EUR),
                new Kamera("Sony SNC-CX600", 3.0, 870m, Currency.EUR),
-               new Kamera("Sony SNC-EP550", 5.0, 1200m, Currency.EUR),
+               new Kamera("Sony SNC-EP500", 5.0, 1200m, Currency.EUR),
+               new Kamera("Sony SNC-TX800", 3.2, 775m, Currency.EUR),
+               new Kamera("Sony SNC-EP550", 5.5, 1360m, Currency.EUR),
                new NetworkSwitch("Cisco SG 300-52", 52, 4, true, false, true, 599m, Currency.GBP),
-               new NetworkSwitch("NETGEAR FS728TP-100EUS", 24, 2, false, true, true, 280m, Currency.EUR)
+               new NetworkSwitch("Cisco SG 300-26", 26, 2, false, false, true, 456m, Currency.GBP), 
+               new NetworkSwitch("Cisco SG 400-24", 24, 3, false, false, false, 356m, Currency.GBP),
+               new NetworkSwitch("NETGEAR FS728TP-100EUS", 24, 2, false, true, true, 456m, Currency.EUR),
+               new NetworkSwitch("NETGEAR FS008TP-1000EUS", 8, 2, true, true, true, 256m, Currency.EUR)
             };
-
+            Console.WriteLine("Preis Sony SNC-CX600: {0}", products[1].Price);
             foreach (var s in products)
             {
-                Console.WriteLine($" {s.GetDescription} {s.Price}");
+                Console.WriteLine("Task3: {0} {1}", s.GetDescription, s.Price);
             }
 
 
@@ -47,6 +55,11 @@ namespace Task4
             /* Serialization*/
 
             Serialization.Run(products);
+
+            /* Task 6 */
+
+            Pull_Push_Task.Run(products);
+
         }
     }
 

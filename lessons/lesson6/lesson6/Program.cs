@@ -13,9 +13,9 @@ namespace lesson6
             //PullExample.Run();
 
             //PushExample.Run();
-            PushExampleWithSubject.Run();
+            //PushExampleWithSubject.Run();
 
-            //TasksExample.Run();
+            TasksExample.Run();
         }
     }
 }
